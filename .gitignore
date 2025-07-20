@@ -26,7 +26,7 @@ tmp/
 *.log
 
 # 🎵 Arquivos de áudio (caso você não queira versionar)
-audio/
+
 
 # 🧪 Resultados de testes automatizados
 coverage/
