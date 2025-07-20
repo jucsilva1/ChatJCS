@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <header id="cabecalho_chat">
+        <h1>💬 ChatJCS - Adaptado</h1>
+        <div id="identidade_usuario">
+            Você está logado como: <span id="nome_usuario"></span>
+        </div>
+    </header>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+
+    <!-- 🔐 Área de Login -->
+    <div id="acesso_usuario">
+        <form id="login">
+            <!-- 🪪 Campo de apelido -->
+            <label for="apelido" style="color: #E0E0E0; font-size: 0.95em; display: block; margin-bottom: 4px;">🪪 Seu
+                apelido:</label>
+            <input type="text" placeholder="Insira seu apelido" name="apelido" id="apelido" required />
+
+            <!-- 🎭 Campo de avatar -->
+            <label for="avatar"
+                style="color: #E0E0E0; font-size: 0.95em; display: block; margin-top: 10px; margin-bottom: 4px;">🎭 Seu
+                avatar:</label>
+            <input type="text" placeholder="Emoji avatar (ex: 😎)" name="avatar" id="avatar" maxlength="2" />
+
+            <!-- 💡 Instruções para escolha do avatar -->
+            <p style="color: #B0B0B0; font-size: 0.85em; margin-top: 6px; line-height: 1.4;">
+                💡 Para escolher um avatar, digite ou cole um emoji.<br />
+                No <strong>Windows</strong>, pressione <strong>Win + .</strong> para abrir o painel de emojis.<br />
+                No celular, use o teclado de emojis normalmente.
+            </p>
+
+            <!-- Botão de entrada -->
+            <input type="submit" value="Entrar" />
+        </form>
+    </div>
+
+    <!-- 💬 Sala do Chat (inicialmente oculta) -->
+    <div id="sala_chat">
+        <!-- 👤 Identidade do usuário logado -->
+        <div id="identidade_usuario">
+            Você está logado como: <span id="nome_usuario"></span>
+        </div>
+
+        <!-- 📜 Histórico de mensagens -->
+        <div id="historico_mensagens"></div>
+
+        <!-- 🎯 Lista de usuários conectados -->
+        <div id="lista_usuarios_container">
+            <label for="lista_usuarios">Enviar para:</label>
+            <select multiple id="lista_usuarios">
+                <option value="">TODOS</option>
+                <!-- Os usuários serão adicionados via JS -->
+            </select>
+        </div>
+
+        <!-- 📝 Campo de envio de mensagem -->
+        <form id="chat">
+            <input type="text" id="texto_mensagem" name="texto_mensagem" autocomplete="off" required />
+            <input type="submit" value="Enviar mensagem!" />
+        </form>
+        <!-- ⬇️ Espaço extra para não colidir com o rodapé -->
+        <div style="height: 70px;"></div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/script.js"></script> <!-- Externo e organizado -->
+
+    <!-- Áudios para notificações -->
+    <audio id="som_mensagem" src="/audio/notification.mp3" preload="auto"></audio>
+    <audio id="som_mensagem_privada" src="/audio/privada.mp3" preload="auto"></audio>
+    <footer id="rodape_chat">
+        <p>&copy; 2025 Julio Cesar. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

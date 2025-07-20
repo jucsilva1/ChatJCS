@@ -1,0 +1,59 @@
+# 🌐 Dependências do Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ⚙️ Configurações locais do ambiente
+.env
+.DS_Store
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# 🗑️ Arquivos temporários e de sistema
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# 🔎 Arquivos de cache e build
+.cache/
+dist/
+build/
+tmp/
+*.log
+
+# 🎵 Arquivos de áudio (caso você não queira versionar)
+audio/
+
+# 🧪 Resultados de testes automatizados
+coverage/
+*.test.js
+__tests__/
+jest.config.js
+
+# 🖼️ Arquivos gerados ou imagens temporárias (se aplicável)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# 💬 Arquivos de sessão ou armazenamento local (se usou)
+*.sqlite
+*.db
+
+# 🛠️ Executáveis ou instaladores (gerados por erro ou teste)
+*.exe
+*.out
+*.app
+
+# 📦 Pasta específica do XAMPP/htdocs (opcional, se estiver versionando por fora)
+htdocs/
+
+# 👑 Evita que pastas internas do sistema entrem no Git
+*.bak
+*.tmp
+*.swp
