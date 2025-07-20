@@ -26,6 +26,8 @@ tmp/
 *.log
 
 # 🎵 Arquivos de áudio (caso você não queira versionar)
+# (não ignorar 'public/audio/')
+
 
 
 # 🧪 Resultados de testes automatizados
