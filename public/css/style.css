@@ -1,25 +1,28 @@
-/* 🔤 Reset e fonte padrão */
+/* Reset básico e fonte padrão para toda a página */
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Tahoma, sans-serif;
-  background: #302f31;
-  overflow: hidden; /* bloqueia rolagem antes do login */
+  background: #302f31; /* Fundo escuro */
+  height: 100%;
+  box-sizing: border-box; /* Define box-sizing global para border-box */
 }
+
+/* Cabeçalho do chat */
 #cabecalho_chat {
-  background-color: #45c5bf;
+  background-color: #45c5bf; /* Azul claro */
   color: #fff;
-  padding: 8px 8px;
+  padding: 8px;
   text-align: center;
   font-size: 14px;
   font-weight: bold;
   border-radius: 6px;
   max-width: 400px;
-  margin: 8px auto;
+  margin: 8px auto; /* Centraliza horizontalmente */
 }
 
-/* 📋 Layout principal */
+/* Área de login - posicionamento centralizado fixo */
 #acesso_usuario {
   position: fixed;
   top: 50%;
@@ -28,81 +31,156 @@ body {
   width: 320px;
 }
 
+/* Remove margens do formulário de login */
 #acesso_usuario form {
   margin: 0;
 }
 
+/* Sala do chat - inicialmente escondida, largura limitada e espaço para rodapé */
 #sala_chat {
-  display: none; /* Oculto até o usuário logar */
+  display: none;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 90px; /* Espaço para rodapé fixo */
+  box-sizing: border-box;
 }
 
-#sala_chat {
-  padding-bottom: 60px; /* espaço reservado para não colidir com rodapé */
+/* Container principal do chat e lista de usuários, usa flexbox */
+.chat-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 0; /* Remove espaçamento entre as caixas para evitar faixas laterais */
+  padding: 0; /* Remove padding para que fique encostado nas bordas */
+  box-sizing: border-box;
 }
 
-/* 🧾 Formulários */
-form {
-  margin: 15px 0;
-}
-
-form input[type="text"] {
-  border: 2px solid #45c5bf;
-  border-radius: 5px;
-  padding: 5px;
-  width: 75%;
-}
-
-form input[type="submit"] {
-  background: #45c5bf;
-  color: #fff;
-  width: 50%;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 7px 5px;
-  border: none;
-  border-radius: 5px;
-  width: 19%;
-  cursor: pointer;
-}
-
-/* 💬 Áreas do chat */
-#historico_mensagens,
-#lista_usuarios {
+/* Histórico de mensagens */
+#historico_mensagens {
+  flex: 0 0 70%; /* Ocupa 70% da largura */
+  height: 500px;
   background: #fff;
   border: 2px solid #45c5bf;
-  float: left;
-  overflow-y: auto;
-  margin-bottom: 10px;
+  border-radius: 6px;
+  padding: 10px;
+  overflow-y: auto; /* Barra de rolagem vertical se necessário */
+  box-sizing: border-box;
 }
 
+/* Container da lista de usuários */
+#lista_usuarios_container {
+  flex: 0 0 30%; /* Ocupa 30% da largura */
+  max-height: 500px;
+  background-color: #f2fdfc; /* Fundo claro */
+  color: #000;
+  font-size: 14px;
+  border: 2px solid #45c5bf;
+  padding: 10px;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+  overflow-y: auto; /* Barra de rolagem vertical aparece só se conteúdo ultrapassar altura */
+  height: auto; /* Altura automática para evitar barra fixa e mostrar só se precisar */
+  max-height: 500px; /* Limita máximo para não crescer demais */
+}
+
+/* Label da lista de usuários */
+label[for="lista_usuarios"] {
+  background-color: #45c5bf;
+  font-size: 16px;
+  font-weight: bold;
+  color: #dee7e6;
+  padding: 10px;
+  display: block;
+  border-radius: 6px 6px 0 0; /* Arredonda só o topo */
+  margin-bottom: 5px;
+}
+
+/* Select lista de usuários (caixa de seleção múltipla) */
+#lista_usuarios {
+  width: 100%;
+  /* altura automática para ajustar à lista de usuários */
+  height: auto;
+  min-height: 100px; /* mínimo para manter tamanho razoável com poucos usuários */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #000;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: none; /* evita redimensionamento */
+}
+
+/* Formulário do chat: input de texto e botão de envio, fixado abaixo da tela */
+form#chat {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: #302f31; /* Mesma cor do fundo da página */
+  box-sizing: border-box;
+  gap: 0px; /* reduz o espaço entre input e botão para ajustar visual */
+  position: fixed;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Input texto da mensagem ocupa 70% da largura do form */
+form#chat input[type="text"] {
+  width: 70%;
+  border: 2px solid #45c5bf;
+  border-radius: 5px 5px 5px 5px; /* Borda arredondada apenas no lado esquerdo */
+  padding: 8px 10px;
+  font-size: 16px;
+  background: #fff;
+  color: #000;
+  box-sizing: border-box;
+  height: 42px;
+  margin: 0; /* REMOVE margens */
+}
+
+/* Botão de enviar ocupa 28% da largura (igual à lista de usuários) */
+form#chat input[type="submit"] {
+  width: 30%;
+  background: #45c5bf;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px 5px 5px 5px; /* Borda arredondada apenas no lado direito */
+  cursor: pointer;
+  box-sizing: border-box;
+  height: 42px;
+  margin: 1; /* REMOVE margens */
+}
+
+/* Rodapé fixo, com texto centralizado vertical e horizontalmente */
 #rodape_chat {
-  background-color: #b8ecea; /* Exemplo de cor de fundo */
-  padding: 10px; /* Exemplo de espaçamento */
-  text-align: center; /* Exemplo de alinhamento */
+  background-color: #b8ecea;
+  padding: 10px;
   color: #2b2929;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 50px;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-#historico_mensagens {
-  width: 75%;
-  height: 550px;
-  border-right: 0;
-  overflow-y: auto;
-  padding: 10px;
-}
+/* Estilização das mensagens no histórico */
 
-#lista_usuarios {
-  width: 20%;
-  height: 554px;
-  border-left: 1px solid #45c5bf;
-  padding: 10px;
-  font-size: 14px;
-}
-
-/* 🎨 Estilização por tipo de mensagem */
+/* Mensagens do sistema - destaque em azul claro */
 #historico_mensagens .sistema {
   background-color: #45c5bf;
   color: #fff;
@@ -111,6 +189,7 @@ form input[type="submit"] {
   border-radius: 4px;
 }
 
+/* Mensagens privadas - fundo cinza */
 #historico_mensagens .privada {
   background-color: #ccc;
   color: #000;
@@ -119,13 +198,13 @@ form input[type="submit"] {
   border-radius: 4px;
 }
 
-/* 💬 Mensagem pública (tipo vazio ou padrão) */
+/* Mensagens públicas - texto preto normal */
 #historico_mensagens .publica {
   color: #000;
   padding: 5px;
 }
 
-/* 👤 Identidade do usuário logado */
+/* Identidade do usuário logado - caixa azul com texto branco */
 #identidade_usuario {
   text-align: center;
   margin: 20px auto;
@@ -137,13 +216,43 @@ form input[type="submit"] {
   border-radius: 8px;
   width: fit-content;
   max-width: 80%;
+  box-sizing: border-box;
 }
-label[for="lista_usuarios"] {
-  background-color: #45c5bf;
-  font-size: 16px;
-  font-weight: bold;
-  color: #dee7e6;
-  padding: 10px;
-  display: flex;
-  max-width: 100px;
+
+/* Responsivo para telas menores que 768px */
+@media (max-width: 768px) {
+  /* Container principal muda para coluna */
+  .chat-container {
+    flex-direction: column;
+  }
+
+  /* Histórico e lista ocupam 100% da largura, altura reduzida */
+  #historico_mensagens,
+  #lista_usuarios_container {
+    flex: 1 1 100%;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+
+  /* Formulário do chat empilha verticalmente */
+  form#chat {
+    flex-direction: column;
+    bottom: 55px;
+    padding: 10px;
+    gap: 10px; /* mais espaço entre os inputs empilhados */
+  }
+
+  /* Inputs do chat com largura total e margens */
+  form#chat input[type="text"],
+  form#chat input[type="submit"] {
+    width: 100%;
+    margin: 5px 0;
+    height: 40px; /* ligeiramente menor */
+  }
+
+  /* Rodapé com fonte e padding menores */
+  #rodape_chat {
+    font-size: 0.85em;
+    padding: 6px;
+  }
 }

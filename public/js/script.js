@@ -45,6 +45,12 @@ $("form#login").submit(function (e) {
   var apelido = $("#apelido").val();
   var avatar = $("#avatar").val();
 
+  // ✅ Validação do campo de apelido
+  if (!apelido || apelido.trim() === "") {
+    alert("Digite seu apelido antes de entrar!");
+    return;
+  }
+
   socket.emit(
     "entrar",
     { apelido: apelido, avatar: avatar },
