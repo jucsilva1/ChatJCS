@@ -90,3 +90,9 @@ socket.on("atualizar usuarios", function (usuarios) {
     $("#lista_usuarios").append(opcao_usuario);
   });
 });
+
+document.getElementById("botao_sair").addEventListener("click", function () {
+  if (confirm("Deseja realmente sair do chat?")) {
+    location.reload(); // ou window.location.href = "/" se quiser redirecionar para outra tela
+  }
+});

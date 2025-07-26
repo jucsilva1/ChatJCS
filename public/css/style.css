@@ -205,7 +205,7 @@ form#chat input[type="submit"] {
 }
 
 /* Identidade do usuário logado - caixa azul com texto branco */
-#identidade_usuario {
+/*#identidade_usuario {
   text-align: center;
   margin: 20px auto;
   padding: 10px 20px;
@@ -217,6 +217,39 @@ form#chat input[type="submit"] {
   width: fit-content;
   max-width: 80%;
   box-sizing: border-box;
+}*/
+/* Container do usuário logado com botão lado a lado */
+#identidade_usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* espaço entre texto e botão */
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background: #45c5bf;
+  font-weight: bold;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 80%;
+  box-sizing: border-box;
+}
+
+/* Botão sair */
+#botao_sair {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botao_sair:hover {
+  background-color: #d13a3a;
 }
 
 /* Responsivo para telas menores que 768px */
